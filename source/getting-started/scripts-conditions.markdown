@@ -135,9 +135,10 @@ The time condition can test if it is after a specified time, before a specified 
 ```yaml
 condition:
   condition: time
-  # At least one of the following is required.
+  # All of the following are required (AND Condition).
   after: '15:00:00'
   before: '02:00:00'
+  # one of the weekdays is required (weekday is an AND Condition + one of the days has matched (OR Condition)).
   weekday:
     - mon
     - wed
