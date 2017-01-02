@@ -123,6 +123,14 @@ condition:
   value_template: '{% raw %}{{ states.device_tracker.iphone.attributes.battery > 50 }}{% endraw %}'
 ```
 
+This template condition will result in False if the state of an entity did not change 30 minutes ago. With this you can limit the execution of actions to once every half an hour if.
+   
+```yaml
+condition:
+  condition: template
+  value_template: '{{(as_timestamp(now())-as_timestamp(states.petpointer.battery_state.last_updated)) > 1800 }}'
+```
+
 Within an automation, template conditions also have access to the `trigger` variable as [described here][automation-templating].
 
 [template]: /topics/templating/
