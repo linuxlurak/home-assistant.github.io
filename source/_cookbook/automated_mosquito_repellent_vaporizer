@@ -1,0 +1,51 @@
+---
+layout: page
+title: "automated mosquito repellent vaporizer"
+description: "very basic automation; magic lies in the hardware hack"
+date: 2015-10-08 19:05
+sidebar: true
+comments: false
+sharing: true
+footer: true
+ha_category: Automation Examples
+---
+
+Hardware required:
+ - Sonoff Basic (wlan version) from Itead,
+ - hot glue gun,
+ - a cross screw driver (for Sonoff screws),
+ - one pieces of dead simple mosquito repellent vaporizer (eg "Optimum Mückenstopp" (recommended), "Raid Mückenstecker").
+ 
+ Software required:
+  - .ino file from https://github.com/KmanOz/Sonoff-HomeAssistant
+  or (not tested) from: https://github.com/arendst/Sonoff-Tasmota.
+  
+ Prepare your Sonoff:
+ Open the case and cut a square into the bottom cover like this:
+  
+  
+
+You need two automations. One powers on the vaporizer. The other powers it off.
+
+```yaml
+automation:
+ - alias: "NO-Squito timer (power on @ 22:00)"
+   trigger:
+    platform: time
+    after: '22:00:00'
+   action:
+    - service: switch.turn_on
+      data:
+         entity_id: switch.switch_sleeping_mosquitoheater
+         
+ - alias: "NO-Squito timer (power off @ 04:00)"
+   trigger:
+    platform: time
+    after: '04:00:00'
+   action:
+    - service: switch.turn_on
+      data:
+         entity_id: switch.switch_sleeping_mosquitoheater
+```
+
+Thats it.
