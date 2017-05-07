@@ -13,7 +13,7 @@ ha_category: Automation Examples
 Hardware required:
  - Sonoff Basic (wlan version) from Itead,
  - hot glue gun,
- - a cross screw driver (for Sonoff screws),
+ - a cross screw driver (for the small Sonoff screws),
  - one pieces of dead simple mosquito repellent vaporizer (eg "Optimum Mückenstopp" (recommended), "Raid Mückenstecker").
  
  Software required:
