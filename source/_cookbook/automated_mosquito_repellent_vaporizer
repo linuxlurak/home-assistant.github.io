@@ -24,6 +24,44 @@ Hardware required:
  Open the case and cut a square into the bottom cover like this:
   
   
+  PASTED SNIPPETS:
+  switch:
+ - platform: mqtt
+   name: "switch_sleeping_mosquitoheater"
+   state_topic: "home/sleeping/mosquitoheater/stat"
+   command_topic: "home/sleeping/mosquitoheater"
+   qos: 0
+   payload_on: "on"
+   payload_off: "off"
+   retain: true
+   
+   
+#define BUTTON          0                                    // (Don't Change for Original Sonoff, Sonoff SV, Sonoff Touch, Sonoff S20 Socket)
+#define RELAY           12                                   // (Don't Change for Original Sonoff, Sonoff SV, Sonoff Touch, Sonoff S20 Socket)
+#define LED             13                                   // (Don't Change for Original Sonoff, Sonoff SV, Sonoff Touch, Sonoff S20 Socket)
+
+#define MQTT_CLIENT     "switch_sleeping_mosquitoheater"       // mqtt client_id (Must be unique for each Sonoff)
+#define MQTT_SERVER     ""                      // mqtt server
+#define MQTT_PORT       1883                                 // mqtt port
+#define MQTT_TOPIC      "home/sleeping/mosquitoheater"          // mqtt topic (Must be unique for each Sonoff)
+#define MQTT_USER       ""                               // mqtt user
+#define MQTT_PASS       ""                               // mqtt password
+
+#define WIFI_SSID       ""                            // wifi ssid
+#define WIFI_PASS       ""                           // wifi password
+  
+Setup your arduino IDE this way:
+Board: "Generic ESP8266 Module"
+Flash Mode: "DIO"
+Flash Frequency: "40MHz"
+CPU Frequency: "80MHz"
+Flash Size: "1M (64K SPIFFS)"
+Debug Port: "Disabled"
+Debug Level: "None"
+Reset Method: "ck"
+Upload Speed: "115200"
+Port: --> COM-Port of your FTDI-USB device or for OTA (Over The Air) the correct IP of your Sonoff
+
 
 You need two automations. One powers on the vaporizer. The other powers it off.
 
